@@ -1,9 +1,10 @@
 import React from "react";
+import TryingGlasses from "./components/TryingGlasses";
 
 function App() {
   return (
     <div className="App">
-      <p>Test</p>
+      <TryingGlasses />
     </div>
   );
 }
