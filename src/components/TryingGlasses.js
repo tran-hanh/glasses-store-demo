@@ -40,9 +40,13 @@ export default class TryingGlasses extends Component {
     const keyFrame = `@keyframes animChangeGlasses${Date.now()} {
       from {
         width: 0;
+        transform: rotate(45deg);
+        opacity:0;
       }
       to {
         width: 150px;
+        transform: rotate(0deg);
+        opacity:0.7;
       }
     }`;
 
@@ -51,7 +55,8 @@ export default class TryingGlasses extends Component {
       top: "75px",
       right: "68px",
       opacity: "0.7",
-      animation: `animChangeGlasses${Date.now()} 1s`,
+      transform: "rotate(0deg)",
+      animation: `animChangeGlasses${Date.now()} 1.5s`,
     };
 
     const infoGlasses = {
