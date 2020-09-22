@@ -2,16 +2,36 @@ import React, { Component } from "react";
 import dataGlasses from "../data/dataGlasses.json";
 
 export default class TryingGlasses extends Component {
+  state = {
+    glassesCurrent: {
+      id: 2,
+      price: 50,
+      name: "GUCCI G8759H",
+      url: "./glassesImage/v2.png",
+      desc:
+        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+  };
+
   renderGlassesList = () => {
     return dataGlasses.map((glassesItem, index) => {
       return (
         <img
+          onClick={() => {
+            this.changeGlasses(glassesItem);
+          }}
           className="ml-2 p-2 border border-width-1"
           style={{ width: "110px", cursor: "pointer" }}
           src={glassesItem.url}
           key={index}
         />
       );
+    });
+  };
+
+  changeGlasses = (newGlasses) => {
+    this.setState({
+      glassesCurrent: newGlasses,
     });
   };
 
@@ -55,24 +75,29 @@ export default class TryingGlasses extends Component {
                   <img
                     className="position-absolute"
                     style={{ width: "250px" }}
-                    src="./glassesImage/model.jpg"
+                    src={"./glassesImage/model.jpg"}
                     alt="model.jpg"
                   />
                   <img
                     className="position-absolute"
                     style={styleGlasses}
-                    src="./glassesImage/v1.png"
+                    src={this.state.glassesCurrent.url}
                   />
                   <div className="position-relative" style={infoGlasses}>
                     <span
                       style={{ color: "#ABB2FF", fontSize: "17px" }}
                       className="font-weight-bold"
                     >
-                      Glass Name
+                      {this.state.glassesCurrent.name}
                     </span>
                     <br />
-                    <span style={{ fontSize: "13px", fontWeight: "400" }}>
-                      Description
+                    <span
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      {this.state.glassesCurrent.desc}
                     </span>
                   </div>
                 </div>
