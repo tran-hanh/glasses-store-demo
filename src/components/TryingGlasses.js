@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import dataGlasses from "../data/dataGlasses.json";
+import "./TryingGlasses.css";
 
 export default class TryingGlasses extends Component {
   state = {
@@ -36,11 +37,21 @@ export default class TryingGlasses extends Component {
   };
 
   render() {
+    const keyFrame = `@keyframes animChangeGlasses${Date.now()} {
+      from {
+        width: 0;
+      }
+      to {
+        width: 150px;
+      }
+    }`;
+
     const styleGlasses = {
       width: "150px",
       top: "75px",
       right: "68px",
       opacity: "0.7",
+      animation: `animChangeGlasses${Date.now()} 1s`,
     };
 
     const infoGlasses = {
@@ -61,6 +72,7 @@ export default class TryingGlasses extends Component {
           backgroundSize: "2000px",
         }}
       >
+        <style>{keyFrame}</style>
         <div style={{ backgroundColor: "rgba(0,0,0,.8)", minHeight: "2000px" }}>
           <h3
             className="text-center text-light p-5"
@@ -79,7 +91,7 @@ export default class TryingGlasses extends Component {
                     alt="model.jpg"
                   />
                   <img
-                    className="position-absolute"
+                    className="position-absolute glassesStyle"
                     style={styleGlasses}
                     src={this.state.glassesCurrent.url}
                   />
